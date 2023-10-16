@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom";
+import { PetList } from "../components/PetList";
 
 export function Pets(props) {
     const navigate = useNavigate();
@@ -24,35 +25,8 @@ export function Pets(props) {
                 <input type="text" placeholder="Search for pet" className="input input-bordered input-warning w-full max-w-xs" onChange={(e) => petSearch(e)} />
                 <Link to={`/create`} className="btn btn-outline btn-warning">Add pet</Link>
             </div>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Pet name</th>
-                            <th>Breed</th>
-                            <th className="text-end">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredPets.map((pet, index) => (
-                            <tr className="hover" key={index}>
-                                <th>{index + 1}</th>
-                                <td>{pet.name}</td>
-                                <td>{pet.breed}</td>
-                                <td className="flex flex-col md:flex-row gap-2 justify-end">
-                                    <Link
-                                        className="btn btn-outline btn-warning"
-                                        to={`/${pet.id}`}
-                                    >List details</Link>
-                                    <button onClick={() => { props.deletePet(pet.id); navigate(0) }} className="btn btn-outline btn-error">Delete pet</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
 
+            <PetList filteredPets={filteredPets} deletePet={props.deletePet} navigate={navigate} />
         </div>
     )
 }
