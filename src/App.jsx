@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createOrUpdatePet, deletePet, getAllPets, getPetById } from "./services/main/pets"
 
 function App() {
