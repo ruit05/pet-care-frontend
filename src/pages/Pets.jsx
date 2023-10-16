@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 
 export function Pets(props) {
     const [filteredPets, setFilteredPets] = useState(props.pets || [])
@@ -41,7 +42,10 @@ export function Pets(props) {
                                 <td>{pet.name}</td>
                                 <td>{pet.breed}</td>
                                 <td className="flex flex-col md:flex-row gap-2">
-                                    <button className="btn btn-outline btn-warning">List details</button>
+                                    <Link
+                                        className="btn btn-outline btn-warning"
+                                        to={`/${pet.id}`}
+                                    >List details</Link>
                                     <button className="btn btn-outline btn-error">Delete pet</button>
                                 </td>
                             </tr>

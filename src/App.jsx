@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createOrUpdatePet, deletePet, getAllPets, getPetById } from "./services/main/pets"
 import { Pets } from "./pages/pets";
+import { PetsDetails } from './pages/PetsDetails'
 
 function App() {
   const [pets, setPets] = useState([])
@@ -68,7 +69,12 @@ function App() {
 
   return (
     <>
-      <Pets pets={pets} />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" Component={() => <Pets pets={pets} />} />
+          <Route path="/:id" Component={() => <PetsDetails />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
