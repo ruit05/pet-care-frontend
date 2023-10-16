@@ -23,7 +23,7 @@ export function Pets(props) {
         <div className="container mx-auto w-3/4 px-4">
             <div className="flex my-8 justify-between w-full">
                 <input type="text" placeholder="Search for pet" className="input input-bordered input-warning w-full max-w-xs" onChange={(e) => petSearch(e)} />
-                <button className="btn btn-outline btn-warning">Add pet</button>
+                <Link to={`/create`} className="btn btn-outline btn-warning">Add pet</Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table">
