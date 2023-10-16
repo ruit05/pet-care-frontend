@@ -14,7 +14,7 @@ function App() {
       }
 
       const petCreated = await createOrUpdatePet(data)
-      
+
       console.log(petCreated)
 
       const allPets = await getAllPets()
