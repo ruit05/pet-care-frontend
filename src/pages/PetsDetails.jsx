@@ -18,7 +18,6 @@ export function PetsDetails() {
                 async function getPetByIdAsync() {
                     const pet = await getPetById(id)
                     setPet(pet)
-                    console.log(pet)
                 }
 
                 getPetByIdAsync()
@@ -34,10 +33,10 @@ export function PetsDetails() {
         pet.name = e.target.name.value
         pet.dateOfBirth = e.target.dob.value
         pet.breed = e.target.breed.value
-        console.log(pet)
         try {
             createOrUpdatePet(pet)
             navigate('/')
+            navigate(0)
         } catch (error) {
             console.log(error)
         }
@@ -50,10 +49,10 @@ export function PetsDetails() {
             dateOfBirth: e.target.dob.value,
             breed: e.target.breed.value
         }
-        console.log(pet)
         try {
             createOrUpdatePet(pet)
             navigate('/')
+            navigate(0)
         } catch (error) {
             console.log(error)
         }

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Pets(props) {
+    const navigate = useNavigate();
     const [filteredPets, setFilteredPets] = useState(props.pets || [])
 
     useEffect(() => {
@@ -11,8 +12,6 @@ export function Pets(props) {
     }, [props.pets]);
 
     const petSearch = (e) => {
-        console.log(e.target.value)
-        console.log(filteredPets)
         e.target.value === '' ? setFilteredPets(props.pets) :
             setFilteredPets(props.pets.filter((pet) => {
                 return pet.name.toLowerCase().startsWith(e.target.value.toLowerCase());
@@ -46,7 +45,7 @@ export function Pets(props) {
                                         className="btn btn-outline btn-warning"
                                         to={`/${pet.id}`}
                                     >List details</Link>
-                                    <button onClick={() => { props.deletePet(pet.id) }} className="btn btn-outline btn-error">Delete pet</button>
+                                    <button onClick={() => { props.deletePet(pet.id); navigate(0) }} className="btn btn-outline btn-error">Delete pet</button>
                                 </td>
                             </tr>
                         ))}
