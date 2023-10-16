@@ -1,9 +1,11 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createOrUpdatePet, deletePet, getAllPets, getPetById } from "./services/main/pets"
 import { Pets } from "./pages/pets";
 
 function App() {
+  const [pets, setPets] = useState([])
+
   // useEffect(() => {
   //   //Permitir cancelar um pedido ao servidor
   //   const abortController = new AbortController();
@@ -48,9 +50,25 @@ function App() {
   //   };
   // }, [])
 
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    async function getAllPetsAsync() {
+      const allPets = await getAllPets()
+
+      setPets(allPets)
+    }
+
+    getAllPetsAsync();
+
+    return () => {
+      abortController.abort();
+    };
+  }, [])
+
   return (
     <>
-      <Pets />
+      <Pets pets={pets} />
     </>
   )
 }
