@@ -10,24 +10,23 @@ export function PetForm(props) {
                     <label className="label">
                         <span className="label-text">Pet name</span>
                     </label>
-                    <input type="text" name="name" placeholder="Type here" className="input input-bordered w-full" defaultValue={props.pet.name} />
+                    <input required type="text" name="name" placeholder="Type here" className="input input-bordered w-full" defaultValue={props.pet.name} />
                 </div>
                 <div className="px-4 py-2">
                     <label className="label">
                         <span className="label-text">Date of Birth</span>
                     </label>
-                    <input type="date" name="dob" placeholder="Type here" className="input input-bordered w-full" defaultValue={props.pet.dateOfBirth} />
+                    <input required type="date" name="dob" placeholder="Type here" className="input input-bordered w-full" defaultValue={props.pet.dateOfBirth} />
                 </div>
                 <div className="px-4 py-2">
                     <label className="label">
                         <span className="label-text">Breed</span>
                     </label>
-                    <input type="text" name="breed" placeholder="Type here" className="input input-bordered w-full" defaultValue={props.pet.breed} />
+                    <input required type="text" name="breed" placeholder="Type here" className="input input-bordered w-full" defaultValue={props.pet.breed} />
                 </div>
                 <div className="px-4 py-4">
                     <button type="submit" className="btn btn-outline btn-info w-full">Edit</button>
                 </div>
-
             </form>
         </div>
     );

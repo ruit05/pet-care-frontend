@@ -1,4 +1,4 @@
-import { redirect, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getPetById, createOrUpdatePet } from "../services/main/pets"
 import { useEffect, useState } from "react";
 import { PetForm } from "../components/PetForm";
@@ -8,6 +8,7 @@ export function PetsDetails() {
     const { id } = useParams();
     const [pet, setPet] = useState({})
     const [isEditing, setIsEditing] = useState(true)
+    const navigate = useNavigate();
 
     {
         id !== 'create' &&
@@ -34,8 +35,12 @@ export function PetsDetails() {
         pet.dateOfBirth = e.target.dob.value
         pet.breed = e.target.breed.value
         console.log(pet)
-        createOrUpdatePet(pet)
-            .then(() => { redirect("/") });
+        try {
+            createOrUpdatePet(pet)
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const addPet = (e) => {
@@ -46,8 +51,12 @@ export function PetsDetails() {
             breed: e.target.breed.value
         }
         console.log(pet)
-        createOrUpdatePet(pet)
-            .then(() => { redirect("/") });
+        try {
+            createOrUpdatePet(pet)
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (

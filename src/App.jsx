@@ -71,7 +71,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" Component={() => <Pets pets={pets} />} />
+          <Route exact path="/" Component={() => <Pets pets={pets} deletePet={deletePet} />} />
           <Route path="/:id" Component={() => <PetsDetails />} />
         </Routes>
       </BrowserRouter>

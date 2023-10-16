@@ -29,10 +29,10 @@ export function Pets(props) {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>#</th>
                             <th>Pet name</th>
                             <th>Breed</th>
-                            <th>Actions</th>
+                            <th className="text-end">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,12 +41,12 @@ export function Pets(props) {
                                 <th>{index + 1}</th>
                                 <td>{pet.name}</td>
                                 <td>{pet.breed}</td>
-                                <td className="flex flex-col md:flex-row gap-2">
+                                <td className="flex flex-col md:flex-row gap-2 justify-end">
                                     <Link
                                         className="btn btn-outline btn-warning"
                                         to={`/${pet.id}`}
                                     >List details</Link>
-                                    <button className="btn btn-outline btn-error">Delete pet</button>
+                                    <button onClick={() => { props.deletePet(pet.id) }} className="btn btn-outline btn-error">Delete pet</button>
                                 </td>
                             </tr>
                         ))}
